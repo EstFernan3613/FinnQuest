@@ -357,6 +357,7 @@ GameObject:
   - component: {fileID: 1043160914}
   - component: {fileID: 1043160915}
   - component: {fileID: 1043160916}
+  - component: {fileID: 1043160917}
   m_Layer: 0
   m_Name: Personaje
   m_TagString: Untagged
@@ -447,7 +448,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c5ef78f1ac468774a83b35c6062f99f4, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -516,6 +517,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 5
+  fuerzaSalto: 10
+  saltosMaximos: 1
+  capaSuelo:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!95 &1043160917
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043160911}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ea7456fac5d7db4eba769b134dd3a58, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1875571404
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +557,7 @@ GameObject:
   - component: {fileID: 1875571410}
   - component: {fileID: 1875571409}
   - component: {fileID: 1875571408}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataformas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4000,7 +4027,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths: []
