@@ -6,6 +6,7 @@ public class CMController : MonoBehaviour
 {
     public float velocidad;
     public float fuerzaSalto;
+    public float fuerzaGolpe;
     public int saltosMaximos;
     public LayerMask capaSuelo;
     public AudioClip sonidoSalto;
@@ -15,6 +16,7 @@ public class CMController : MonoBehaviour
     private bool lookDerecha = true;
     private int saltosRestantes;
     private Animator animator;
+    private bool puedeMoverse = true;
 
     private void Start()
     {
@@ -57,6 +59,9 @@ public class CMController : MonoBehaviour
 
     void MovimientoPersonaje()
     {
+
+        if (!puedeMoverse) return;
+
         float InputMovimiento = Input.GetAxis("Horizontal");
 
         if (InputMovimiento != 0f)
@@ -80,5 +85,37 @@ public class CMController : MonoBehaviour
             lookDerecha = !lookDerecha;
             transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         }
+    }
+
+    public void AplicarGolpe()
+    {
+        puedeMoverse = false;
+
+        Vector2 direccionGolpe;
+
+        if(rigidbody.velocity.x > 0)
+        {
+            direccionGolpe = new Vector2(-1, 1);
+        }
+        else
+        {
+            direccionGolpe = new Vector2(1, 1);
+        }
+
+        rigidbody.AddForce(direccionGolpe * fuerzaGolpe);
+
+        StartCoroutine(EsperaryActivarMovimiento());
+    }
+
+    IEnumerator EsperaryActivarMovimiento()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        while (!EstaSuelo())
+        {
+            yield return null;
+        }
+
+        puedeMoverse = true;
     }
 }
