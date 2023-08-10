@@ -5,7 +5,7 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     public int valor = 1;
-    public GameManager gameManager;
+    public AudioClip sonidoMoneda;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +20,12 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.CompareTag("Player"))
         {
-            gameManager.SumarPuntos(valor);
+            GameManager.Instance.SumarPuntos(valor);
             Destroy(this.gameObject);
+            AudioManager.Instance.ReproducirSonido(sonidoMoneda);
         }
     }
 }

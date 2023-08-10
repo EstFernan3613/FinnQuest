@@ -5,7 +5,6 @@ using TMPro;
 
 public class HUD : MonoBehaviour
 {
-    public GameManager gameManager;
     public TextMeshProUGUI puntos;
 
     // Start is called before the first frame update
@@ -17,6 +16,6 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        puntos.text = gameManager.PuntosTotales.ToString();
+        puntos.text = GameManager.Instance.PuntosTotales.ToString();
     }
 }

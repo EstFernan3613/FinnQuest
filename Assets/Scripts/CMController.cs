@@ -8,6 +8,7 @@ public class CMController : MonoBehaviour
     public float fuerzaSalto;
     public int saltosMaximos;
     public LayerMask capaSuelo;
+    public AudioClip sonidoSalto;
 
     private Rigidbody2D rigidbody;
     private BoxCollider2D boxCollider;
@@ -48,6 +49,7 @@ public class CMController : MonoBehaviour
             saltosRestantes--;
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0f);
             rigidbody.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
+            AudioManager.Instance.ReproducirSonido(sonidoSalto);
         }
     }
 
